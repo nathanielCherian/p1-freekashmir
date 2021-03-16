@@ -1,0 +1,18 @@
+.navbar{
+    padding: 1vmin;
+    background-color: var(--primaryColor);
+    display: flex;
+
+
+    .nav-item{
+        padding: 1vmin;
+    }
+
+
+    .logo-text{
+        font-size: 3vmin;
+        font-weight: 500;
+        color: var(--tertiaryColor);
+    }
+
+}
