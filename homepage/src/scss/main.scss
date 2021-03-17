@@ -1,10 +1,19 @@
 :root{
-    --bg: #ffffff;
-    --primaryColor: #4c5361;
-    --secondaryColor: #787d86;
-    --tertiaryColor: #dadada;
+    --bg: #fafdf6;
+    --primaryColor: #000000;
+    --secondaryColor: #b279a7;
+    --tertiaryColor: #D387AB;
+    --color4: #e899dc;
+    --textColor: white;
 }
 
-html, body{
-    background-color: var(--bg);
+html, body, #root{
+    height: 100%;
+    margin: 0;
+}
+
+.App{
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }

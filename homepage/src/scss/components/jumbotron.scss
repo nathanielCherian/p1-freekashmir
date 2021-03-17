@@ -1,0 +1,51 @@
+.jumbotron{
+    height: 100%;
+    background-color: var(--primaryColor);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    
+
+
+    .text-container{
+        padding: 5%;
+    }
+
+    .text-background{
+        background-color: white;
+        position: relative;
+    }
+
+    .back{
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+
+    canvas{
+        position: absolute;
+        width: 100%;
+        
+    }
+
+    .large-text{
+        
+        font-size: 20vmin;
+        
+        line-height: auto;
+        padding: auto;
+        padding-bottom: 1%;
+
+        background-color: black;
+        color: white;
+        mix-blend-mode: multiply;
+
+        /*
+        background: linear-gradient(to right, #1c87c9 50%, red 50%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;*/
+    }
+}
+

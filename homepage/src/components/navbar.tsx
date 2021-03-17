@@ -3,13 +3,11 @@ import '../scss/components/navbar.scss'
 
 const Navbar = () => {
     return (
-        <div>
-            <nav className="navbar">
-                <div className="nav-item logo-text">
-                    <span>Name</span>
-                </div>
-            </nav>
-        </div>
+        <nav className="navbar">
+            <div className="nav-item logo-text">
+                <span>Name</span>
+            </div>
+        </nav>
     )
 }
 
