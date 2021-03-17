@@ -1,19 +1,26 @@
 .navbar{
-    flex: 0 1 auto;
     padding: 1vmin;
     background-color: var(--primaryColor);
+    
+
     display: flex;
+    justify-content: flex-end;
 
 
     .nav-item{
-        padding: 1vmin;
+        padding: 2vmin;
     }
-
 
     .logo-text{
         font-size: 3vmin;
         font-weight: 500;
-        color: var(--tertiaryColor);
+        color: var(--textColor);
+    }
+
+    .get-started{
+
     }
 
 }
+
+

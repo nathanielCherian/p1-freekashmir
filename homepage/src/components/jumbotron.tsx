@@ -9,7 +9,7 @@ const Jumbotron = () => {
     useEffect(() => {
         const canvas = document.getElementById("text-canvas")
         console.log(canvas)
-
+        
         var ctx = canvas.getContext("2d");
         const centerX = canvas.width / 2;
         const centerY = canvas.height / 2;
@@ -38,7 +38,7 @@ const Jumbotron = () => {
             <div className="text-container">
                 <div className="text-background">
                     <canvas id="text-canvas" ></canvas>
-                    <h1 className="large-text">Night At <br/> The Museum</h1>
+                    <h1 className="large-text unselectable">Night At <br/> The Museum</h1>
                 </div>
             </div>
         </div>

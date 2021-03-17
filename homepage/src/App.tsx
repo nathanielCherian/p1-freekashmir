@@ -7,7 +7,10 @@ import './scss/main.scss'
 function App() {
   return (
     <div className="App">
-        <Jumbotron/>
+        <div className="homepage">
+          <Navbar/>
+          <Jumbotron/>
+        </div>
     </div>
   );
 }
