@@ -1,29 +1,38 @@
 import React, {useState}from 'react';
-import Jumbotron from './components/jumbotron';
-import Navbar from './components/navbar';
-import GetStarted from './components/getstarted';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import {Homepage} from './pages/pages';
+import GSPage from './components/gspage';
 import './scss/main.scss'
 
 function App() {
 
-  const [page, setPage] = useState("home");
-
-  console.log("page ", page);
-
-  var toRender = <div></div>;
-  if(page === 'get-started'){
-    toRender = <GetStarted/>
-  }
-
   return (
-    <div className="App">
-        <div className="homepage">
-          <Navbar setPage={setPage}/>
-          <Jumbotron/>
-          {toRender}
+
+      <Router>
+
+        <div className="App">
+
+
+        <Switch>
+
+          <Route path="/get-started">
+            <GSPage/>
+          </Route>
+
+          <Route path="/">
+            <Homepage/>
+          </Route>
+
+        </Switch>
+
         </div>
-    </div>
+
+      </Router>
+
   );
 }
 
