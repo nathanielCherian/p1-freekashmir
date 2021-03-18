@@ -10,13 +10,14 @@
 html, body, #root{
     height: 100%;
     margin: 0;
+    color: var(--textColor);
 }
 
 .App{
     height: 100%;
 }
 
-.homepage{
+.panel-bg{
     display: flex;
     flex-flow: column;
     width: 100%;

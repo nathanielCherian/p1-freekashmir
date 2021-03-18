@@ -4,8 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import {Homepage} from './pages/pages';
-import GSPage from './components/gspage';
+import {GetStarted, Homepage} from './pages/pages';
 import './scss/main.scss'
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
         <Switch>
 
           <Route path="/get-started">
-            <GSPage/>
+            <GetStarted/>
           </Route>
 
           <Route path="/">
