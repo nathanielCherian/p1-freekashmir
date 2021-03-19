@@ -9,11 +9,33 @@ import './scss/main.scss'
 
 function App() {
 
+
+  const pages = [
+    {path:"/", name:"homepage", Component:Homepage},
+    {path:"/get-started", name:"get-started", Component:GetStarted},
+  ]
+
+
+  const routes = pages.map(({path, Component}) => (
+    <Route key={path} exact path={path}>
+      <Component/>
+    </Route>
+  ))
+
   return (
 
       <Router>
-
         <div className="App">
+          {routes}
+        </div>
+      </Router>
+
+  );
+}
+
+export default App;
+
+/*
 
 
         <Switch>
@@ -28,11 +50,4 @@ function App() {
 
         </Switch>
 
-        </div>
-
-      </Router>
-
-  );
-}
-
-export default App;
+        */

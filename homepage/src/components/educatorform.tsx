@@ -3,20 +3,22 @@ import { CSSTransition } from 'react-transition-group';
 import '../scss/components/createform.scss'
 import '../scss/components/transition.scss'
 
-const StudentForm = () => {
+const EducatorForm = () => {
 
-
-    const [classCode, setClassCode] = useState("");
+    const [code, setCode] = useState("");
     const [displayed, setDisplayed] = useState(false);
     useEffect(()=>{
         setDisplayed(true)
     }, []);
 
-    const handleSubmit = (event:any) => {
+
+    const handleSubmit = () => {
         //post to spring
-        event.preventDefault();
+        //validate
+        console.log(code,"hello")
         setDisplayed(false)
     }
+
 
 
     const nodeRef = React.useRef(null);
@@ -24,9 +26,9 @@ const StudentForm = () => {
     return (
         <div className="form-container">
             <CSSTransition nodeRef={nodeRef} unmountOnExit in={displayed} timeout={1000} classNames="test-node">
-                <form className="center-form" autoComplete="off" onSubmit={handleSubmit} ref={nodeRef}>
-                    <label className="form-label">Class Code</label>
-                    <input type="text" name="classCode" maxLength={5} className="form-input__text" onChange={(event)=>setClassCode(event.target.value)}/>
+                <form className="center-form" autoComplete="off" onSubmit={()=>handleSubmit()} ref={nodeRef}>
+                    <label className="form-label">Password</label>
+                    <input type="text" name="code" maxLength={5} className="form-input__text" onChange={(event)=>setCode(event.target.value)}/>
                     <input type="submit" className="form-submit"/>
                 </form>
             </CSSTransition>
@@ -34,4 +36,4 @@ const StudentForm = () => {
     )
 }
 
-export default StudentForm;
+export default EducatorForm;

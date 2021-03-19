@@ -1,16 +1,13 @@
 import React from 'react';
 import '../scss/components/selection.scss'
 
-const SelectionBox = (props:{text:string}) => {
+const SelectionBox = (props:{text:string, onClicked:Function}) => {
 
-    const {text} = props;
+    const {text, onClicked} = props;
 
-    const onSelect = () => {
-        
-    }
 
     return(
-        <div className="selection-box" onClick={()=>onSelect()}>
+        <div className="selection-box" onClick={()=>onClicked()}>
             <h1>{text}</h1>
         </div>
     )

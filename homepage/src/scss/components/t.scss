@@ -1,0 +1,50 @@
+.getstarted-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+
+    color: var(--textColor);
+
+
+
+
+    svg{
+        width: 100%;
+        height: 100%;
+        margin-left:auto; margin-right:auto; display:block;
+        transform-origin: center;
+    }
+
+    path{
+        transform: translateX(100%) translateY(0%) scale(0);
+    }
+
+    path[data-grow='1']{
+        animation: 3s ease-out 0s 1 fillScreen;
+    }
+
+}
+
+
+.getstarted-background[data-bg='1']{
+    background-color: #FF0066;
+}
+
+@keyframes fillScreen {
+
+    0%{
+        transform: translateX(100%) translateY(0%) scale(0);
+    }
+
+
+    80%{
+        transform: translateX(50%) translateY(50%) scale(5);
+    }
+
+    100%{
+        transform: translateX(50%) translateY(50%) scale(20);
+    }
+
+}
