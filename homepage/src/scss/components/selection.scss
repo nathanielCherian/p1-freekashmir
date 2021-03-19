@@ -1,8 +1,9 @@
 .selection-box{
     min-width: 300px;
     flex: 0 1 40%;
-    background-color: white;
-    box-shadow: 0 0 10px rgb(94, 94, 94);
+    //background-color: white;
+    //box-shadow: 0 0 10px rgb(94, 94, 94);
+    outline: 2px solid white;
     border-radius: 40px;
     cursor: pointer;
     transition: 1s;
@@ -14,7 +15,7 @@
     justify-content: center;
 
     h1{
-        color: var(--primaryColor);
+        color: var(--textColor);
         font-size: 5vmin;
     }
 
@@ -22,6 +23,6 @@
 
 .selection-box:hover{
     transform: translateY(-10%);
-    box-shadow: 0 0 40px rgb(94, 94, 94);
+    //box-shadow: 0 0 40px rgb(94, 94, 94);
 
 }
