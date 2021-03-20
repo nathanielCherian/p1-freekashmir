@@ -12,16 +12,16 @@
 ## Idea + Growth 
 
 ### Night at the Museum
-*Long Term
-	*Create database/method to hold all art projects
-	*Have various filters and search bars to narrow down projects
-	*Ease of use 
-	*Nice, clean, intuitive design
-	*Incorporate S3 buckets
-*Short Term
-	*Create various pages as bases
-	*Learn ReactJS and Yarn in order to make better UI
-	*Set up database system
+- Long Term
+	- Create database/method to hold all art projects
+	- Have various filters and search bars to narrow down projects
+	- Ease of use 
+	- Nice, clean, intuitive design
+	- Incorporate S3 buckets
+- Short Term
+	- Create various pages as bases
+	- Learn ReactJS and Yarn in order to make better UI
+	- Set up database system
 
 ### AP Exam Preparations
 *Separate page reserved for AP FRQs and practice
