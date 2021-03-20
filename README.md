@@ -24,9 +24,9 @@
 	- Set up database system
 
 ### AP Exam Preparations
-*Separate page reserved for AP FRQs and practice
-*Linked to main page for easy access by teacher
-*GET and POST requests to make FRQs interactive
+- Separate page reserved for AP FRQs and practice
+- Linked to main page for easy access by teacher
+- GET and POST requests to make FRQs interactive
 
 ### Growth
 
