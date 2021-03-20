@@ -44,7 +44,7 @@ Timely: As our project will be used by many people on a fixed date we have a sen
 | GitHub Username | Person |
 | --- | --- |
 | [@nathanielCherian](https://github.com/nathanielCherian) | Nathaniel Cherian |
-| @DhruvK0](https://github.com/DhruvK0) | Dhruv Kanetkar |
+| [@DhruvK0](https://github.com/DhruvK0) | Dhruv Kanetkar |
 | [@EyaadM](https://github.com/eyaadm) | Eyaad Mir |
 | [@Altoid0](https://github.com/Altoid0) | Tanay Shah |
 | [@tonyhieu](https://github.com/tonyhieu) | Anthony Vo |
