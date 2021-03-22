@@ -15,4 +15,11 @@ public class Classes {
         return response;
     }
 
+    public static JSONObject checkCode(JSONObject object){
+        Boolean isValid = Security.authenticate(object, Groups.ADMIN);
+        JSONObject response = new JSONObject();
+        response.put("valid", isValid);
+        return response;
+    }
+
 }

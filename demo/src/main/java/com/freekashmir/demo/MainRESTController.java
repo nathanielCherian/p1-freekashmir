@@ -2,6 +2,7 @@ package com.freekashmir.demo;
 
 import com.freekashmir.demo.API.Classes;
 import com.freekashmir.demo.API.Util;
+import com.freekashmir.demo.Security.Security;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,11 +30,20 @@ public class MainRESTController {
         return new ResponseEntity<Object>(object, HttpStatus.OK);
     }
 
+
+    //Example API
     @PostMapping("/classes")
     public ResponseEntity<Object> postBody(@RequestBody String data) {
         JSONObject inputObject = Util.parseJSON(data);
         JSONObject responseObject = Classes.createClass(inputObject);
-        if(responseObject == null) return new ResponseEntity<Object>(null, HttpStatus.FAILED_DEPENDENCY);
+        if(responseObject == null) return Security.FAILED_AUTH_RESPONSE; //Indicates auth needed for this request
+        return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
+    }
+
+    @PostMapping("/classes/checkPassword")
+    public ResponseEntity<Object> classes__checkPassword(@RequestBody String data) {
+        JSONObject inputObject = Util.parseJSON(data);
+        JSONObject responseObject = Classes.checkCode(inputObject);
         return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
     }
 

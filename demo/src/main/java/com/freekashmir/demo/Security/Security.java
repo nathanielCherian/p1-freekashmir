@@ -1,6 +1,8 @@
 package com.freekashmir.demo.Security;
 
 import org.json.simple.JSONObject;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -10,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Security {
+
+    public static ResponseEntity<Object> FAILED_AUTH_RESPONSE = new ResponseEntity<Object>("failed authentication.", HttpStatus.FORBIDDEN);
 
     private static ArrayList<String> validAdmins = new ArrayList<>() {{
         add("d2653ff7cbb2d8ff129ac27ef5781ce68b2558c41a74af1f2ddca635cbeef07d");
@@ -41,7 +45,7 @@ public class Security {
     }
 
     public static boolean authenticate(JSONObject object, ArrayList<String> group){
-        String authcode = (String) object.get("authcode");
+        String authcode = (String) object.get("auth");
         if(authcode == null) return false;
         return verifySignature(authcode, group);
     }
