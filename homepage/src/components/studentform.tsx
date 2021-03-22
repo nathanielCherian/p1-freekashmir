@@ -8,14 +8,28 @@ const StudentForm = () => {
 
     const [classCode, setClassCode] = useState("");
     const [displayed, setDisplayed] = useState(false);
+    const [modifier, setModifier] = useState("");
+
+
     useEffect(()=>{
         setDisplayed(true)
     }, []);
 
+
+    const checkClassCode = (code:string) => {
+        //verify code here
+        return false;
+    }
+
     const handleSubmit = (event:any) => {
         //post to spring
         event.preventDefault();
-        setDisplayed(false)
+
+        if(checkClassCode(classCode)){
+            setDisplayed(false)
+        }else{
+            setModifier("incorrect")
+        }
     }
 
 
@@ -26,7 +40,7 @@ const StudentForm = () => {
             <CSSTransition nodeRef={nodeRef} unmountOnExit in={displayed} timeout={1000} classNames="test-node">
                 <form className="center-form" autoComplete="off" onSubmit={handleSubmit} ref={nodeRef}>
                     <label className="form-label">Class Code</label>
-                    <input type="text" name="classCode" maxLength={5} className="form-input__text" onChange={(event)=>setClassCode(event.target.value)}/>
+                    <input type="text" name="classCode" maxLength={5} className={"form-input__text " + modifier} onAnimationEnd={()=>setModifier("")} onChange={(event)=>setClassCode(event.target.value)}/>
                     <input type="submit" className="form-submit"/>
                 </form>
             </CSSTransition>
