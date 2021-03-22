@@ -1,5 +1,7 @@
 package com.freekashmir.demo;
 
+import com.freekashmir.demo.API.Classes;
+import com.freekashmir.demo.API.Util;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -29,9 +31,10 @@ public class MainRESTController {
 
     @PostMapping("/classes")
     public ResponseEntity<Object> postBody(@RequestBody String data) {
-        JSONObject object = new JSONObject();
-        object.put("text", "this is posted data");
-        return new ResponseEntity<Object>(object, HttpStatus.OK);
+        JSONObject inputObject = Util.parseJSON(data);
+        JSONObject responseObject = Classes.createClass(inputObject);
+        if(responseObject == null) return new ResponseEntity<Object>(null, HttpStatus.FAILED_DEPENDENCY);
+        return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
     }
 
 
