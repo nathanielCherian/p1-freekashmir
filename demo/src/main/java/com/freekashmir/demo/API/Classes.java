@@ -11,6 +11,9 @@ public class Classes {
         JSONObject response = new JSONObject();
         String name = (String) object.get("name");
 
+        String code = Util.generateCode(5);
+        response.put("classCode", code);
+
         response.put("completed", true);
         return response;
     }
