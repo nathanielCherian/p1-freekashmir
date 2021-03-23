@@ -73,6 +73,10 @@
 }
 
 
+.correct{
+    box-shadow: 5px 10px 18px green;
+}
+
 .incorrect{
     animation: incorrectBounce 0.82s cubic-bezier(.36,.07,.19,.97) 1;
 }

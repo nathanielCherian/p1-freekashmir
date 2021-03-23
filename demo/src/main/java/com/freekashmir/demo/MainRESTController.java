@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600) //remove in production
 @RestController
 @RequestMapping("/api")
 public class MainRESTController {
@@ -32,8 +33,8 @@ public class MainRESTController {
 
 
     //Example API
-    @PostMapping("/classes")
-    public ResponseEntity<Object> postBody(@RequestBody String data) {
+    @PostMapping("/classes") //create class
+    public ResponseEntity<Object> classes_create(@RequestBody String data) {
         JSONObject inputObject = Util.parseJSON(data);
         JSONObject responseObject = Classes.createClass(inputObject);
         if(responseObject == null) return Security.FAILED_AUTH_RESPONSE; //Indicates auth needed for this request
@@ -47,5 +48,13 @@ public class MainRESTController {
         return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
     }
 
+
+    @PostMapping("/students") //create class
+    public ResponseEntity<Object> students__create(@RequestBody String data) {
+        JSONObject inputObject = Util.parseJSON(data);
+        JSONObject responseObject = Classes.createClass(inputObject);
+        if(responseObject == null) return Security.FAILED_AUTH_RESPONSE; //Indicates auth needed for this request
+        return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
+    }
 
 }

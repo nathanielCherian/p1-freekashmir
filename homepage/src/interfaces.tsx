@@ -1,6 +1,6 @@
 // Defines all api responses
 
-export interface IsCodeValid{
+export interface checkPassword{
     valid:boolean
 }
 
@@ -9,5 +9,5 @@ export interface Class{
 }
 
 export interface Student{
-    
+
 }
