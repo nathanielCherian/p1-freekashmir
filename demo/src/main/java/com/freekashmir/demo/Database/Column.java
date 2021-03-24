@@ -5,11 +5,14 @@ import java.util.ArrayList;
 public class Column {
 
     public static String NULL = "NULL";
+    public static String BLOB = "BLOB";
     public static String INTEGER = "INTEGER";
     public static String REAL = "REAL";
     public static String TEXT = "TEXT";
     public static String STRING = "STRING";
-    public static String BLOB = "BLOB";
+    public static String VARCHAR = "VARCHAR";
+    public static String VARCHAR(int l){return "VARCHAR("+l+")";}
+
 
     public static String SET_NULL = "SET NULL";
     public static String SET_DEFAULT = "SET DEFAULT";

@@ -2,7 +2,9 @@ package com.freekashmir.demo;
 
 import com.freekashmir.demo.API.Classes;
 import com.freekashmir.demo.API.Util;
+import com.freekashmir.demo.Model.Model;
 import com.freekashmir.demo.Security.Security;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,11 +19,13 @@ import java.util.List;
 @RequestMapping("/api")
 public class MainRESTController {
 
+    public static Model model = new Model();
+
     @GetMapping("/classes")
     public ResponseEntity<Object> getClasses(){
         JSONObject object = new JSONObject();
-        object.put("name", "nathan");
-        return new ResponseEntity<Object>(object, HttpStatus.OK);
+        JSONArray response = Classes.getClasses();
+        return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
     @GetMapping("/classes/{id}")
