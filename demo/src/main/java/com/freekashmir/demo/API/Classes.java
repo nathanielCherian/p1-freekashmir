@@ -20,12 +20,11 @@ public class Classes {
 
     public static JSONObject createClass(JSONObject object){
         if(!Security.authenticate(object, Groups.ADMIN)) return null; //fail
-        JSONObject response = new JSONObject();
         String name = (String) object.get("name");
         String code = Util.generateCode(5);
+        classes.createRow(new Object[]{null, code, name});
 
-        System.out.println(classes.getFullTableJSON());
-
+        JSONObject response = new JSONObject();
         response.put("classCode", code);
         response.put("completed", true);
         return response;

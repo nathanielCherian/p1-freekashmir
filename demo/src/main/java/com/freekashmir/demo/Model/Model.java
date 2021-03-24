@@ -24,6 +24,7 @@ public class Model {
     public static void main(String[] args) {
         Model model = new Model();
         model.classes.createRow(new Object[]{null, "f134f", "Mrs. Teacher"});
+        model.projects.createRow(new Object[]{null, "test"});
         System.out.println(model.classes.getFullTableJSON());
     }
 

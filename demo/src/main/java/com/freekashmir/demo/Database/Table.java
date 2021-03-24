@@ -131,7 +131,6 @@ public class Table {
 
             for (int i=1; i<numColumns+1; i++) {
                 String column_name = rsmd.getColumnName(i);
-                System.out.println(rsmd.getColumnTypeName(i));
 
                 switch( rsmd.getColumnType( i ) ) {
                     case java.sql.Types.ARRAY:
