@@ -4,8 +4,9 @@ export interface checkPassword{
     valid:boolean
 }
 
-export interface Class{
-
+export interface ClassForm{
+    code:string,
+    name:string
 }
 
 export interface Student{
