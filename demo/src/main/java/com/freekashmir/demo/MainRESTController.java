@@ -37,7 +37,7 @@ public class MainRESTController {
     }
 
     @PostMapping("/classes") //create class
-    public ResponseEntity<Object> classes_create(@RequestBody String data) {
+    public ResponseEntity<Object> classes__create(@RequestBody String data) {
         JSONObject inputObject = Util.parseJSON(data);
         JSONObject responseObject = Classes.createClass(inputObject);
         if(responseObject == null) return Security.FAILED_AUTH_RESPONSE; //Indicates auth needed for this request

@@ -5,9 +5,15 @@ export interface checkPassword{
 }
 
 export interface ClassForm{
-    code:string,
-    name:string
+    auth?:string,
+    name?:string
 }
+
+export interface ClassFormResponse{
+    classCode?:string
+    completed?:boolean
+}
+
 
 export interface Student{
 

@@ -49,16 +49,10 @@
                 background-color: var(--textColor);
                 color: var(--primaryColor);
             }
-
-
-
             
         }
 
-        
-
     }
-
 
 
     .center-form{
@@ -67,10 +61,8 @@
         align-items: center;
         justify-content: center;
     }
-
-
-
 }
+
 
 
 .correct{
@@ -99,4 +91,25 @@
     40%, 60% {
       transform: translate3d(4px, 0, 0);
     }
+  }
+
+
+  .info-screen{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h1{
+          font-size: 7vmin;
+      }
+
+      .class-code{
+          font-size: 20vmin;
+          margin: 0px;
+          line-height: 20vmin;
+
+      }
   }
