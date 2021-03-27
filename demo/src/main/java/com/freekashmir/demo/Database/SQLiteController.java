@@ -91,9 +91,16 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     }
 
     @Override
-    public ResultSet getRowByQuery(String tableName, String columnName, String value) {
+    public ResultSet getRowsByQuery(String tableName, String columnName, String value) {
         //numeric values must not be in quotes
         String query = "SELECT * FROM %s WHERE %s=%s".formatted(tableName, columnName, value);
+        return executeQuery(query);
+    }
+
+    @Override
+    public ResultSet getRowsByQuery(String tableName, String columnName, String value, int results) {
+        //numeric values must not be in quotes
+        String query = "SELECT TOP %s FROM %s WHERE %s=%s".formatted(results, tableName, columnName, value);
         return executeQuery(query);
     }
 

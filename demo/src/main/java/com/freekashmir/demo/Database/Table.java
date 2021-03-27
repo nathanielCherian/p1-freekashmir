@@ -100,15 +100,13 @@ public class Table {
         return null;
     }
 
-
-
     public JSONArray getRowsByColumn(String columnName, Object searchValue){
         String value = "'%s'".formatted(searchValue.toString());
         if(searchValue instanceof Number){
             value = searchValue.toString(); //handle numeric values
         }
 
-        ResultSet rs = controller.getRowByQuery(tableName, columnName, value);
+        ResultSet rs = controller.getRowsByQuery(tableName, columnName, value);
 
         try {
             JSONArray result = resultSetToJSON(rs);
@@ -116,7 +114,23 @@ public class Table {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return null;
+    }
 
+    public JSONArray getRowByColumn(String columnName, Object searchValue){
+        String value = "'%s'".formatted(searchValue.toString());
+        if(searchValue instanceof Number){
+            value = searchValue.toString(); //handle numeric values
+        }
+
+        ResultSet rs = controller.getRowsByQuery(tableName, columnName, value);
+
+        try {
+            JSONArray result = resultSetToJSON(rs);
+            return result;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return null;
     }
 

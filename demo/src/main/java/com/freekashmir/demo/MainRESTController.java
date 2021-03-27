@@ -69,4 +69,11 @@ public class MainRESTController {
         return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
     }
 
+    @PostMapping("/students/checkClassCode") //create class
+    public ResponseEntity<Object> students__checkClassCode(@RequestBody String data) {
+        JSONObject inputObject = Util.parseJSON(data);
+        JSONObject responseObject = Students.checkClassCode(inputObject);
+        return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
+    }
+
 }

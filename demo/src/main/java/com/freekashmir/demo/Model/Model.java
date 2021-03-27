@@ -11,12 +11,12 @@ public class Model {
         classes = new Table("Classes")
                 .addColumn(new Column("id", Column.INTEGER).isPrimaryKey())
                 .addColumn(new Column("classCode", Column.VARCHAR).isUnique().isNotNull())
-                .addColumn(new Column("teacherName", Column.VARCHAR))
+                .addColumn(new Column("teacherName", Column.VARCHAR).isNotNull())
                 .create();
 
         projects = new Table("Projects")
                 .addColumn(new Column("id", Column.INTEGER).isPrimaryKey())
-                .addColumn(new Column("studentName", Column.VARCHAR))
+                .addColumn(new Column("studentName", Column.VARCHAR).isNotNull())
                 .create();
 
     }

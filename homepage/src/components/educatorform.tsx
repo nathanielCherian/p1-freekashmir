@@ -38,6 +38,7 @@ const EducatorForm = () => {
                 setModifier(modifier=>({...modifier, password:"correct"}))
                 if(data.name !== ""){
                     setModifier(modifier=>({...modifier, name:"correct"}))
+
                     submitForm(data)
                 }else{
                     setModifier(modifier=>({...modifier, name:"incorrect"}))
@@ -77,6 +78,8 @@ const EducatorForm = () => {
             <div className="form-container">
                 <form className="center-form" autoComplete="off" onSubmit={handleSubmit}>
     
+                    <label className="form-label">Create a Class</label>
+
                     <input type="text" name="code" maxLength={10}
                     placeholder="password"
                     className={"form-input__text " + modifier.password} 

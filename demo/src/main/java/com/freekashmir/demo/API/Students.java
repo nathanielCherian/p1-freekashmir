@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 public class Students {
 
     public static Table students = MainRESTController.model.projects;
+    public static Table classes = MainRESTController.model.classes;
 
     public static JSONArray getStudents(){
         JSONArray projects = students.getFullTableJSON();
@@ -20,12 +21,31 @@ public class Students {
         JSONObject response = new JSONObject();
         String classCode = (String) object.get("classCode");
         String name = (String) object.get("name");
-        int grade = ((Long)object.get("grade")).intValue();
+        int gradeLevel = ((Long)object.get("grade")).intValue();
 
         students.createRow(new Object[]{null, name});
 
         response.put("completed", true);
         return response;
+    }
+
+    public static JSONObject checkClassCode(JSONObject object){
+        String classCode = (String) object.get("classCode");
+        JSONArray arrs = classes.getRowsByColumn("classCode", classCode);
+        JSONObject response = new JSONObject();
+        if(arrs.size() == 1){
+            response.put("class", (JSONObject)arrs.get(0));
+            response.put("valid", true);
+        }else{
+            response.put("valid", false);
+        }
+        return response;
+    }
+
+
+    public static void main(String[] args) {
+        JSONArray arr = classes.getRowsByColumn("classCode", "8V46R");
+        System.out.println("arr " + arr);
     }
 
 }
