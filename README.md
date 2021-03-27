@@ -41,10 +41,10 @@ Timely: As our project will be used by many people on a fixed date we have a sen
 
 ## Contributors
 
-| GitHub Username | Person |
-| --- | --- |
-| [@nathanielCherian](https://github.com/nathanielCherian) | Nathaniel Cherian |
-| [@DhruvK0](https://github.com/DhruvK0) | Dhruv Kanetkar |
-| [@EyaadM](https://github.com/eyaadm) | Eyaad Mir |
-| [@Altoid0](https://github.com/Altoid0) | Tanay Shah |
-| [@tonyhieu](https://github.com/tonyhieu) | Anthony Vo |
+| GitHub Username | Person | Project Ticket | 
+| --- | --- | --- |
+| [@nathanielCherian](https://github.com/nathanielCherian) | Nathaniel Cherian | [Ticket](https://github.com/nathanielCherian/p1-freekashmir/issues/1) |
+| [@DhruvK0](https://github.com/DhruvK0) | Dhruv Kanetkar | [Ticket](https://github.com/nathanielCherian/p1-freekashmir/issues/2) |
+| [@EyaadM](https://github.com/eyaadm) | Eyaad Mir | [Ticket](https://github.com/nathanielCherian/p1-freekashmir/issues/6) |
+| [@Altoid0](https://github.com/Altoid0) | Tanay Shah | [Ticket](https://github.com/nathanielCherian/p1-freekashmir/issues/3) |
+| [@tonyhieu](https://github.com/tonyhieu) | Anthony Vo | [Ticket](https://github.com/nathanielCherian/p1-freekashmir/issues/4) |
