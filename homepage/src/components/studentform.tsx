@@ -84,6 +84,10 @@ const CompleteStudentForm = (props:{classCode:string}) => {
     })
     const [classData, setClassData] = useState<Class>();
 
+    const [response, setResponse] = useState({
+        completed:false,
+    });
+ 
     const [modifier, setModifier] = useState({
         studentName:"",
         grade:""
@@ -120,7 +124,7 @@ const CompleteStudentForm = (props:{classCode:string}) => {
 
         makeRequest({...projectData, classCode}, 'students', 'POST')
             .then((response:any) => {
-                console.log(response);
+                setResponse(response);
             })
 
     }
@@ -130,6 +134,14 @@ const CompleteStudentForm = (props:{classCode:string}) => {
         return <></>
     }else if(!classData.valid){
         return <h1>Whoops, you're not supposed to see this </h1>
+    }
+
+    if(response.completed){
+        return (
+            <div className="form-container">
+                <h1>Thanks {projectData.studentName}, Your good to go!</h1>
+            </div>
+        )
     }
 
     return (    
