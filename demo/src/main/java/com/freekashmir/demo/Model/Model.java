@@ -17,6 +17,8 @@ public class Model {
         projects = new Table("Projects")
                 .addColumn(new Column("id", Column.INTEGER).isPrimaryKey())
                 .addColumn(new Column("studentName", Column.VARCHAR).isNotNull())
+                .addColumn(new Column("grade", Column.INTEGER))
+                .addColumn(new Column("classCode", Column.VARCHAR).isNotNull().isForeignKey("Classes", "classCode", Column.CASCADE))
                 .create();
 
     }

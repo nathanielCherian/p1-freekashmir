@@ -7,6 +7,9 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Table {
 
@@ -58,7 +61,6 @@ public class Table {
                 //dataVals[i] = "null";
                 continue;
             }
-            System.out.println("'%s'".formatted(data[i].toString()));
             dataVals.add("'%s'".formatted(data[i].toString()));
             specifiedCols.add(columnNames[i]);
         }
@@ -99,6 +101,31 @@ public class Table {
         }
         return null;
     }
+
+    public JSONArray getTableWithParams(JSONObject params){
+        String[] pa = new String[params.size()]; int i =0;
+        Set keys =  params.keySet();
+        for(Object key: keys){
+            Object value = params.get(key);
+            String valString = "'%s'".formatted(value.toString());
+            if(value instanceof Number){
+                valString = value.toString(); //handle numeric values
+            }
+            pa[i] = key.toString()+"="+valString;
+            i++;
+        }
+
+        ResultSet rs = controller.getRowsByQuery(tableName, pa);
+
+        try {
+            JSONArray result = resultSetToJSON(rs);
+            return result;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
 
     public JSONArray getRowsByColumn(String columnName, Object searchValue){
         String value = "'%s'".formatted(searchValue.toString());

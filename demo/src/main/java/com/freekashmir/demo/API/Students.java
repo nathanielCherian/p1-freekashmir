@@ -12,9 +12,11 @@ public class Students {
     public static Table students = MainRESTController.model.projects;
     public static Table classes = MainRESTController.model.classes;
 
-    public static JSONArray getStudents(){
-        JSONArray projects = students.getFullTableJSON();
-        return projects;
+    public static JSONArray getStudents(JSONObject params){
+        if(!params.isEmpty()){
+            return students.getTableWithParams(params);
+        }
+         return students.getFullTableJSON();
     }
 
     public static JSONObject createStudent(JSONObject object){
@@ -23,7 +25,7 @@ public class Students {
         String name = (String) object.get("studentName");
         int gradeLevel = ((Long)object.get("grade")).intValue();
 
-        students.createRow(new Object[]{null, name});
+        students.createRow(new Object[]{null, name, gradeLevel, classCode});
 
         response.put("completed", true);
         return response;

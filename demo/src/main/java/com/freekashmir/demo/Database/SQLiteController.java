@@ -29,7 +29,7 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     }
 
     private Connection dbConnection;
-    private String url = "jdbc:sqlite:" + System.getProperty("java.io.tmpdir") + File.separator + "database.db";
+    private String url = "jdbc:sqlite:" + System.getProperty("java.io.tmpdir") + File.separator + "natm.db";
 
     public SQLiteController(){
         connectToDB();
@@ -90,6 +90,7 @@ public class SQLiteController implements SQLCommands, SQLQueries{
         return executeQuery(query);
     }
 
+    //Search for rows by query, int results gives
     @Override
     public ResultSet getRowsByQuery(String tableName, String columnName, String value) {
         //numeric values must not be in quotes
@@ -101,6 +102,13 @@ public class SQLiteController implements SQLCommands, SQLQueries{
     public ResultSet getRowsByQuery(String tableName, String columnName, String value, int results) {
         //numeric values must not be in quotes
         String query = "SELECT TOP %s FROM %s WHERE %s=%s".formatted(results, tableName, columnName, value);
+        return executeQuery(query);
+    }
+
+    @Override
+    public ResultSet getRowsByQuery(String tableName, String[] params) {
+        String ps = String.join(" AND ", params);
+        String query = "SELECT * FROM %s WHERE %s".formatted(tableName, ps);
         return executeQuery(query);
     }
 

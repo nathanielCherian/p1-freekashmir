@@ -57,8 +57,12 @@ public class MainRESTController {
     // ------------------------- STUDENTS ----------------------------
 
     @GetMapping("/students")
-    public ResponseEntity<Object> getStudents(){
-        JSONArray response = Students.getStudents();
+    public ResponseEntity<Object> getStudents(@RequestParam(value = "id", required = false) Integer id,
+                                              @RequestParam(value = "grade", required = false) Integer grade){
+        JSONObject object = new JSONObject();
+        if(id!= null) object.put("id", id.intValue());
+        if(grade!= null) object.put("grade", grade.intValue());
+        JSONArray response = Students.getStudents(object);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
