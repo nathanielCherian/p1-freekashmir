@@ -18,4 +18,9 @@ public class MainController {
         return "get-started.html";
     }
 
+    @GetMapping("/get-started/classes/{classCode}")
+    public String uniqueClassCode(){
+        return "get-started.html";
+    }
+
 }
