@@ -4,7 +4,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import {GetStarted, Homepage} from './pages/pages';
+import {GetStarted, Homepage, StudentFormComplete} from './pages/pages';
 import './scss/main.scss'
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
   const pages = [
     {path:"/", name:"homepage", Component:Homepage},
     {path:"/get-started", name:"get-started", Component:GetStarted},
+    {path:"/get-started/classes/:classCode", Component:StudentFormComplete}
   ]
 
 

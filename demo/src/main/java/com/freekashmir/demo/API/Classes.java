@@ -20,7 +20,7 @@ public class Classes {
 
     public static JSONObject createClass(JSONObject object){
         if(!Security.authenticate(object, Groups.ADMIN)) return null; //fail
-        String name = (String) object.get("name");
+        String name = (String) object.get("teacherName");
         String code = Util.generateCode(5);
         classes.createRow(new Object[]{null, code, name});
 

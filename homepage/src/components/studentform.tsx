@@ -1,6 +1,8 @@
+import { truncateSync } from 'fs';
 import React, {useEffect, useState} from 'react';
+import { Redirect } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
-import { ProjectForm } from '../interfaces';
+import { ClassForm } from '../interfaces';
 import '../scss/components/createform.scss'
 import '../scss/components/transition.scss'
 import makeRequest from '../Util';
@@ -8,7 +10,7 @@ import makeRequest from '../Util';
 const StudentForm = () => {
 
 
-    const [data, setData] = useState<ProjectForm>({
+    const [data, setData] = useState({
         classCode:"",
         name:"",
         grade:-1
@@ -16,7 +18,7 @@ const StudentForm = () => {
 
     const [classCode, setClassCode] = useState("");
     const [modifier, setModifier] = useState("");
-
+    const [redirect, setRedirect] = useState(false);
 
 
 
@@ -27,6 +29,7 @@ const StudentForm = () => {
             .then((response:any) => {
                 if(response.valid === true){
                     setModifier("correct")
+                    setRedirect(true);
                 }else{
                     setModifier("incorrect")
                 }
@@ -36,6 +39,11 @@ const StudentForm = () => {
 
 
     const nodeRef = React.useRef(null);
+
+
+    if(redirect){
+        return <Redirect to={`/get-started/classes/${data.classCode}`}/>;
+    }
 
     return (
         <div className="form-container">
@@ -65,4 +73,45 @@ const StudentForm = () => {
     )*/
 }
 
-export default StudentForm;
+
+const CompleteStudentForm = (props:{classCode:string}) => {
+
+    const {classCode} = props;
+
+    const [isValid, setIsValid] = useState(null)
+    const [classData, setClassData] = useState<ClassForm>({});
+
+    const validateClassCode = () => {
+        makeRequest({classCode}, 'students/checkClassCode', 'POST')
+            .then((response:any) => {
+                console.log(response)
+                setIsValid(response.valid);
+                if(response.valid){
+                    setClassData({...response.class, valid:true});
+                }else{
+                    setClassData({valid:false})
+                }
+            });
+    }
+    useEffect(() => {
+        validateClassCode();
+    }, [])
+
+
+    if(Object.keys(classData).length === 0){ // Render errors
+        return <></>
+    }else if(!classData.valid){
+        return <h1>Whoops, you're not supposed to see this </h1>
+    }
+
+    return (    
+        <div>
+            <h1>Class Code: {classData.classCode}</h1>
+            <h1>Teacher name: {classData.teacherName}</h1>
+        </div>
+    )
+
+}
+
+
+export {StudentForm, CompleteStudentForm};

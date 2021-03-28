@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react";
+import { useParams } from 'react-router-dom'
 import Jumbotron from "../components/jumbotron";
 import Navbar from "../components/navbar";
 import SelectionBox from "../components/selection";
-import StudentForm from "../components/studentform";
 
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import '../scss/components/transition.scss'
 import EducatorForm from "../components/educatorform";
+import {StudentForm, CompleteStudentForm} from "../components/studentform";
 
 const Homepage = () => {
     return (
@@ -66,7 +67,23 @@ const GetStarted = (props:any) => {
     )
 }
 
-export {Homepage, GetStarted};
+const StudentFormComplete = (props:any) => {
+
+    const {classCode} = useParams<any>();
+
+    return (
+        <div className="panel-bg">
+            <Navbar link="/" text="Home"/>
+            <div className="jumbotron-center">
+                <CompleteStudentForm classCode={classCode}/>
+            </div>
+        </div>
+    )
+}
+
+
+
+export {Homepage, GetStarted, StudentFormComplete};
 
 /*
             {/*<CSSTransition nodeRef={nodeRef} unmountOnExit in={test} timeout={1000} classNames="test-node">

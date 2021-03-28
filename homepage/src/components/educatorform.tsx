@@ -16,7 +16,7 @@ const EducatorForm = () => {
 
     const [data, setData] = useState<ClassForm>({
         auth:"",
-        name:""
+        teacherName:""
     });
 
     const [modifier, setModifier] = useState({
@@ -36,7 +36,7 @@ const EducatorForm = () => {
         .then((responseData:any) => {
             if(responseData.valid){
                 setModifier(modifier=>({...modifier, password:"correct"}))
-                if(data.name !== ""){
+                if(data.teacherName !== ""){
                     setModifier(modifier=>({...modifier, name:"correct"}))
 
                     submitForm(data)
@@ -91,7 +91,7 @@ const EducatorForm = () => {
                     placeholder="name"
                     className={"form-input__text "+ modifier.name}
                     onAnimationEnd={()=>setModifier(modifier=>({...modifier, name:""}))}
-                    onChange={(event)=>setData(data=>({...data, name:event.target.value}))}/>
+                    onChange={(event)=>setData(data=>({...data, teacherName:event.target.value}))}/>
     
     
                     <input type="submit" className="form-submit"/>

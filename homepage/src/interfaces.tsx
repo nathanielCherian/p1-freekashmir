@@ -1,8 +1,20 @@
 // Defines all api responses
 
+export interface Class{
+    teacherName?:string
+    classCode?:string,
+    id?:number
+
+    valid?:boolean
+}
+
 export interface ClassForm{
     auth?:string,
-    name?:string
+    teacherName?:string
+    classCode?:string,
+    id?:number
+
+    valid?:boolean
 }
 
 export interface ClassFormResponse{
@@ -11,8 +23,10 @@ export interface ClassFormResponse{
 }
 
 
-export interface ProjectForm{
-    classCode?:string,
-    name?:string,
+export interface Project{
+    studentName?:string
     grade?:number
+    id?:number
+
+    valid?:boolean
 }
