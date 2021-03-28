@@ -3,8 +3,8 @@
 export interface Class{
     teacherName?:string
     classCode?:string,
+    
     id?:number
-
     valid?:boolean
 }
 
@@ -26,7 +26,7 @@ export interface ClassFormResponse{
 export interface Project{
     studentName?:string
     grade?:number
-    id?:number
 
+    id?:number
     valid?:boolean
 }

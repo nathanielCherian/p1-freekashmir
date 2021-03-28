@@ -20,7 +20,7 @@ public class Students {
     public static JSONObject createStudent(JSONObject object){
         JSONObject response = new JSONObject();
         String classCode = (String) object.get("classCode");
-        String name = (String) object.get("name");
+        String name = (String) object.get("studentName");
         int gradeLevel = ((Long)object.get("grade")).intValue();
 
         students.createRow(new Object[]{null, name});

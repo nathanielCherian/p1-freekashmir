@@ -2,7 +2,7 @@ import { truncateSync } from 'fs';
 import React, {useEffect, useState} from 'react';
 import { Redirect } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
-import { ClassForm } from '../interfaces';
+import { Class, ClassForm, Project } from '../interfaces';
 import '../scss/components/createform.scss'
 import '../scss/components/transition.scss'
 import makeRequest from '../Util';
@@ -78,14 +78,21 @@ const CompleteStudentForm = (props:{classCode:string}) => {
 
     const {classCode} = props;
 
-    const [isValid, setIsValid] = useState(null)
-    const [classData, setClassData] = useState<ClassForm>({});
+    const [projectData, setProjectData] = useState<Project>({
+        studentName:"",
+        grade:-1
+    })
+    const [classData, setClassData] = useState<Class>();
+
+    const [modifier, setModifier] = useState({
+        studentName:"",
+        grade:""
+    });
 
     const validateClassCode = () => {
         makeRequest({classCode}, 'students/checkClassCode', 'POST')
             .then((response:any) => {
                 console.log(response)
-                setIsValid(response.valid);
                 if(response.valid){
                     setClassData({...response.class, valid:true});
                 }else{
@@ -98,16 +105,54 @@ const CompleteStudentForm = (props:{classCode:string}) => {
     }, [])
 
 
-    if(Object.keys(classData).length === 0){ // Render errors
+    const handleSubmit = (event:any) => {
+        event.preventDefault();
+
+        if(projectData.studentName === ""){
+            setModifier((modifier) => ({...modifier, studentName:"incorrect"}));
+            return;
+        }
+
+        if((projectData.grade || -1) < 0){
+            setModifier((modifier) => ({...modifier, grade:"incorrect"}));
+            return;
+        }        
+
+        makeRequest({...projectData, classCode}, 'students', 'POST')
+            .then((response:any) => {
+                console.log(response);
+            })
+
+    }
+
+
+    if(classData == null){ // Render errors
         return <></>
     }else if(!classData.valid){
         return <h1>Whoops, you're not supposed to see this </h1>
     }
 
     return (    
-        <div>
+        <div className="form-container">
             <h1>Class Code: {classData.classCode}</h1>
-            <h1>Teacher name: {classData.teacherName}</h1>
+            <h1>Teacher: {classData.teacherName}</h1>
+
+            <form className="center-form" autoComplete="off" onSubmit={handleSubmit}>
+
+                <input type="text" name="studentName" maxLength={30} className={"form-input__text " + modifier.studentName}
+                placeholder="name"
+                onChange={(event)=>setProjectData((projectData)=>({...projectData, studentName:event.target.value}))}
+                onAnimationEnd={()=>setModifier((modifier)=>({...modifier, studentName:""}))}
+                />
+
+                <input type="number" min={9} max={12} name="grade" maxLength={1} className={"form-input__text " + modifier.grade}
+                placeholder="grade"
+                onChange={(event)=>setProjectData((projectData)=>({...projectData, grade:+event.target.value}))}
+                onAnimationEnd={()=>setModifier((modifier)=>({...modifier, grade:""}))}
+                />
+
+                <input type="submit" className="form-submit"/>
+            </form>
         </div>
     )
 
