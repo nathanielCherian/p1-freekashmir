@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import React, { useState, useEffect } from 'react';
+import {Link} from "react-router-dom";
 import Button from './button';
 import '../scss/components/jumbotron.scss'
 
@@ -40,7 +41,12 @@ const Jumbotron = () => {
                     <canvas id="text-canvas" ></canvas>
                     <h1 className="large-text unselectable">Night At <br/> The Museum</h1>
                 </div>
+
+                <div className="btn-container" style={{"display":"none"}}>
+                    <button className="btn-explore"><Link to="/explore">Explore</Link></button>
+                </div>
             </div>
+
 
             <div className="morph-blob" style={{"display":"none"}}>
                 <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
