@@ -139,7 +139,7 @@ const CompleteStudentForm = (props:{classCode:string}) => {
     if(response.completed){
         return (
             <div className="form-container">
-                <h1>Thanks {projectData.studentName}, Your good to go!</h1>
+                <h1>Thanks {projectData.studentName}, You're good to go!</h1>
             </div>
         )
     }
