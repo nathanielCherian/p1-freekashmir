@@ -7,7 +7,12 @@
 4. Copy files `cd .. && rm -r demo/src/main/resources/static && cp -R homepage/build demo/src/main/resources/static`
 5. Run Spring Boot from `/demo` package
 
-
+## Submissions
+### Mini Review 1 Submission
+ - N@TM Smart Goals: https://github.com/nathanielCherian/p1-freekashmir/projects/2
+ - Minilab Repo: https://github.com/Altoid0/FRQ-Site
+ - Minilab Smart Goals: https://github.com/Altoid0/FRQ-Site/projects/1
+ - Proof of everyone's work: https://github.com/Altoid0/FRQ-Site/graphs/contributors
 
 ## Idea + Growth 
 
