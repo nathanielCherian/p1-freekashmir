@@ -23,9 +23,16 @@ public class MainRESTController {
     public static Model model = new Model();
 
     @GetMapping("/classes")
-    public ResponseEntity<Object> getClasses(){
+    public ResponseEntity<Object> getClasses(@RequestParam(value = "id", required = false) Integer id,
+                                             @RequestParam(value = "classCode", required = false) String classCode,
+                                             @RequestParam(value = "classSlug", required = false) String classSlug,
+                                             @RequestParam(value = "teacherName", required = false) String teacherName){
         JSONObject object = new JSONObject();
-        JSONArray response = Classes.getClasses();
+        if(id!=null) object.put("id", id.intValue());
+        if(classCode!=null) object.put("classCode", classCode);
+        if(classSlug!=null) object.put("classSlug", classSlug);
+        if(teacherName!=null) object.put("teacherName", teacherName);
+        JSONArray response = Classes.getClasses(object);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
@@ -35,6 +42,7 @@ public class MainRESTController {
         object.put("classID", classId);
         return new ResponseEntity<Object>(object, HttpStatus.OK);
     }
+
 
     @PostMapping("/classes") //create class
     public ResponseEntity<Object> classes__create(@RequestBody String data) {

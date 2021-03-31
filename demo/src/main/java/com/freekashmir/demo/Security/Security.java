@@ -15,9 +15,7 @@ public class Security {
 
     public static ResponseEntity<Object> FAILED_AUTH_RESPONSE = new ResponseEntity<Object>("failed authentication.", HttpStatus.FORBIDDEN);
 
-    private static ArrayList<String> validAdmins = new ArrayList<>() {{
-        add("d2653ff7cbb2d8ff129ac27ef5781ce68b2558c41a74af1f2ddca635cbeef07d");
-    }};
+
 
     public static byte[] getSHA(String input) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -44,6 +42,7 @@ public class Security {
         return false;
     }
 
+
     public static boolean authenticate(JSONObject object, ArrayList<String> group){
         String authcode = (String) object.get("auth");
         if(authcode == null) return false;
@@ -51,6 +50,10 @@ public class Security {
     }
 
     public static void main(String[] args) {
+        //only for testing purposes
+        ArrayList<String> validAdmins = new ArrayList<>() {{
+            add("d2653ff7cbb2d8ff129ac27ef5781ce68b2558c41a74af1f2ddca635cbeef07d");
+        }};
         System.out.println(verifySignature("password", validAdmins));
     }
 

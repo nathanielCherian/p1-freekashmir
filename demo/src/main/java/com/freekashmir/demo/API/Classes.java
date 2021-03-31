@@ -13,19 +13,23 @@ public class Classes {
 
     public static Table classes = MainRESTController.model.classes;
 
-    public static JSONArray getClasses(){
-        JSONArray response = classes.getFullTableJSON();
-        return response;
+    public static JSONArray getClasses(JSONObject params){
+        if(!params.isEmpty()){
+            return classes.getTableWithParams(params);
+        }
+        return classes.getFullTableJSON();
     }
 
     public static JSONObject createClass(JSONObject object){
         if(!Security.authenticate(object, Groups.ADMIN)) return null; //fail
         String name = (String) object.get("teacherName");
+        String classSlug = (String) object.get("classSlug");
         String code = Util.generateCode(5);
-        classes.createRow(new Object[]{null, code, name});
+        classes.createRow(new Object[]{null, code, classSlug, name});
 
         JSONObject response = new JSONObject();
         response.put("classCode", code);
+        response.put("classSlug", classSlug);
         response.put("completed", true);
         return response;
     }
