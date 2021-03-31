@@ -41,7 +41,7 @@ const Jumbotron = () => {
                     <h1 className="large-text unselectable">Night At <br/> The Museum</h1>
                 </div>
 
-                <div className="btn-container" style={{"display":"none"}}>
+                <div className="btn-container" style={{"display":""}}>
                     <button className="btn-explore"><Link to="/explore">Explore</Link></button>
                 </div>
             </div>

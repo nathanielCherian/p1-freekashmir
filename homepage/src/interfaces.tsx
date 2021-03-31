@@ -3,7 +3,8 @@
 export interface Class{
     teacherName?:string
     classCode?:string,
-    
+    classSlug?:string,
+
     id?:number
     valid?:boolean
 }
@@ -12,6 +13,8 @@ export interface ClassForm{
     auth?:string,
     teacherName?:string
     classCode?:string,
+    classSlug?:string,
+    
     id?:number
 
     valid?:boolean

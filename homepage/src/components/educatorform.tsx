@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { CSSTransition } from 'react-transition-group';
+import slugify from 'react-slugify';
 import '../scss/components/createform.scss'
 import '../scss/components/transition.scss'
 
@@ -16,12 +17,14 @@ const EducatorForm = () => {
 
     const [data, setData] = useState<ClassForm>({
         auth:"",
-        teacherName:""
+        teacherName:"",
+        classSlug:""
     });
 
     const [modifier, setModifier] = useState({
         password:"",
-        name:""
+        name:"",
+        className:""
     });
 
 
@@ -32,21 +35,22 @@ const EducatorForm = () => {
 
     const validateSubmit = (data:ClassForm) => {
         console.log(data);
-        makeRequest({auth:data.auth}, 'classes/checkPassword/', 'POST')
-        .then((responseData:any) => {
-            if(responseData.valid){
-                setModifier(modifier=>({...modifier, password:"correct"}))
-                if(data.teacherName !== ""){
-                    setModifier(modifier=>({...modifier, name:"correct"}))
 
-                    submitForm(data)
+        if(data.teacherName === ""){
+            setModifier(modifier=>({...modifier, name:"incorrect"}))
+            return;
+        }
+
+        makeRequest({auth:data.auth}, 'classes/checkPassword/', 'POST')
+            .then((responseData:any) => {
+                if(!responseData.valid){
+                    setModifier(modifier=>({...modifier, password:"incorrect"}));
                 }else{
-                    setModifier(modifier=>({...modifier, name:"incorrect"}))
+                    submitForm(data);
                 }
-            }else{
-                setModifier(modifier=>({...modifier, password:"incorrect"}))
-            }
         });
+
+
     }
 
     const submitForm = (data:ClassForm) => {
@@ -93,6 +97,11 @@ const EducatorForm = () => {
                     onAnimationEnd={()=>setModifier(modifier=>({...modifier, name:""}))}
                     onChange={(event)=>setData(data=>({...data, teacherName:event.target.value}))}/>
     
+                    <input type="text" name="class-name" maxLength={10}
+                    placeholder="class name"
+                    className={"form-input__text "+ modifier.className}
+                    onAnimationEnd={()=>setModifier(modifier=>({...modifier, className:""}))}
+                    onChange={(event)=>setData(data=>({...data, classSlug:slugify(event.target.value)}))}/>
     
                     <input type="submit" className="form-submit"/>
     

@@ -1,5 +1,6 @@
 import { truncateSync } from 'fs';
 import React, {useEffect, useState} from 'react';
+import { Helmet } from 'react-helmet';
 import { Redirect } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 import { Class, ClassForm, Project } from '../interfaces';
@@ -144,28 +145,34 @@ const CompleteStudentForm = (props:{classCode:string}) => {
         )
     }
 
-    return (    
-        <div className="form-container">
-            <h1>Class Code: {classData.classCode}</h1>
-            <h1>Teacher: {classData.teacherName}</h1>
+    return (
+        <>
+            <Helmet>
+                <meta itemProp="description" content={"join class " + classData.classCode + "!"} />
+            </Helmet>
 
-            <form className="center-form" autoComplete="off" onSubmit={handleSubmit}>
+            <div className="form-container">
+                <h1>Class Code: {classData.classCode}</h1>
+                <h1>Teacher: {classData.teacherName}</h1>
 
-                <input type="text" name="studentName" maxLength={30} className={"form-input__text " + modifier.studentName}
-                placeholder="name"
-                onChange={(event)=>setProjectData((projectData)=>({...projectData, studentName:event.target.value}))}
-                onAnimationEnd={()=>setModifier((modifier)=>({...modifier, studentName:""}))}
-                />
+                <form className="center-form" autoComplete="off" onSubmit={handleSubmit}>
 
-                <input type="number" min={9} max={12} name="grade" maxLength={1} className={"form-input__text " + modifier.grade}
-                placeholder="grade"
-                onChange={(event)=>setProjectData((projectData)=>({...projectData, grade:+event.target.value}))}
-                onAnimationEnd={()=>setModifier((modifier)=>({...modifier, grade:""}))}
-                />
+                    <input type="text" name="studentName" maxLength={30} className={"form-input__text " + modifier.studentName}
+                    placeholder="name"
+                    onChange={(event)=>setProjectData((projectData)=>({...projectData, studentName:event.target.value}))}
+                    onAnimationEnd={()=>setModifier((modifier)=>({...modifier, studentName:""}))}
+                    />
 
-                <input type="submit" className="form-submit"/>
-            </form>
-        </div>
+                    <input type="number" min={9} max={12} name="grade" maxLength={1} className={"form-input__text " + modifier.grade}
+                    placeholder="grade"
+                    onChange={(event)=>setProjectData((projectData)=>({...projectData, grade:+event.target.value}))}
+                    onAnimationEnd={()=>setModifier((modifier)=>({...modifier, grade:""}))}
+                    />
+
+                    <input type="submit" className="form-submit"/>
+                </form>
+            </div>
+        </>
     )
 
 }

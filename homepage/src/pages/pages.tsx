@@ -81,9 +81,35 @@ const StudentFormComplete = (props:any) => {
     )
 }
 
+const ExplorePage = (props:any) => {
+    
+    return (
+        <div className="panel-bg">
+            <Navbar link="/" text="Home"/>
+            <div className="jumbotron-center">
+                <h1>Explore</h1>
+            </div>
+        </div>
+    )
+}
+
+const VisitClass = (props:any) => {
+
+    const {classCode} = useParams<any>();
+
+    return (
+        <div className="panel-bg">
+            <Navbar link="/" text="Home"/>
+            <div className="jumbotron-center">
+                <h1>{classCode}</h1>
+            </div>
+        </div>
+    )
+
+}
 
 
-export {Homepage, GetStarted, StudentFormComplete};
+export {Homepage, GetStarted, StudentFormComplete, ExplorePage};
 
 /*
             {/*<CSSTransition nodeRef={nodeRef} unmountOnExit in={test} timeout={1000} classNames="test-node">
