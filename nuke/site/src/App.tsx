@@ -1,24 +1,19 @@
 import React from 'react';
 import logo from './logo.svg';
+import Jumbotron from './components/Jumbotron';
 import './App.css';
+import './css/main.css'
+import Navbar from './components/Navbar';
+import './fonts/exil.ttf'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App standard-background full-screen main-container">
+      <Navbar link="/" text="get started"/>
+
+      <Jumbotron/>
+      
+      <div className="navbar"></div>
     </div>
   );
 }

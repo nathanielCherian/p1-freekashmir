@@ -1,4 +1,4 @@
-const DEBUG = true;
+const DEBUG = false;
 
 async function makeRequest(data:object, apiURL:string, verb:string = "GET"):Promise<object>{
 
