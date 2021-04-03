@@ -6,7 +6,6 @@
 }
 
 .form-container{
-    height: 75%;
     flex-grow: 1;
     flex-basis: 50%;
     background-color: none;
@@ -28,7 +27,8 @@
 
 
 .input{
-    padding: 2%;
+    padding: 1%;
+    width: 30%;
     font-size: 5vmin;
     border-radius: 100px;
     outline: none;
@@ -46,4 +46,24 @@
 
 .input-submit{
 
+}
+
+.btn{
+    font-family: inherit;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid var(--textColor);
+    padding: 1%;
+    --btn-width: 20vmin;
+    --btn-scale: 2;
+    width: var(--btn-width);
+    color: var(--textColor);
+    font-size: 5vmin;
+    transition: width 1s, background-color 1s linear, color 1s ease;
+}
+
+.btn:hover, .btn:focus{
+    width: calc(var(--btn-width) * var(--btn-scale));
+    background-color: var(--textColor);
+    color: var(--bg);
 }

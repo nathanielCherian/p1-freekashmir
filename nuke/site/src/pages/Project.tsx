@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
-import { Class } from '../model';
+import { Class, Project } from '../model';
 import { makeRequest } from '../utils/API';
 import '../css/project.css';
 import { Input } from '../components/Input';
+import { Button } from '../components/Button';
 
 export const CreateProject = () => {
 
     const {classCode} = useParams<any>();
     const [classData, setClassData] = useState<Class|boolean>()
-
+    const [projectData, setProjectData] = useState<Project>({
+        studentName:"",
+        grade:-1,
+        classCode:classCode
+    })
 
     const validateClassCode = () => {
         makeRequest({}, `classes?classCode=${classCode}`, "GET")
@@ -46,19 +51,31 @@ export const CreateProject = () => {
 
     const handleSubit = (event:any) => {
         event.preventDefault();
+        console.log(projectData)
+        makeRequest(projectData, 'students', 'POST')
+            .then((response:any) => {
+                console.log(response);
+            });
     }
+
 
     /*
     * True case
     */ 
 
+    const cd = classData as Class;
     return (
         <div className="project-form">
             <div className="form-container">
+                <h1>Class Code: {classCode}</h1>
+                <h1>With {cd.teacherName}</h1>
                 <form className="form" onSubmit={handleSubit}>
                     <div className="project-form__inputs">
-                        <Input params={{type:"text", placeholder:"name"}}/>
-                        <Input params={{type:"text", placeholder:"name"}}/>
+                        <Input params={{type:"text", placeholder:"name"}} 
+                        onchange={(event)=>setProjectData((projectData) => ({...projectData, studentName:event.target.value}))}/>
+                        <Input params={{type:"number", placeholder:"grade", min:9, max:12}}
+                        onchange={(event)=>setProjectData((projectData) => ({...projectData, grade:parseInt(event.target.value)}))}/>
+                        <Button text="submit" params={{type:"submit"}}/>
                     </div>
 
                 </form>

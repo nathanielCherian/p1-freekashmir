@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Button = ({params, text}) => {
+interface btn {
+    params:any|undefined,
+    text:string
+}
+
+export const Button:React.FC<btn> = ({params, text}) => {
     return (
         <div className="btn-box">
-            <button {...params}>{text}</button>
+            <button {...params} className="btn">{text}</button>
         </div>
     )
 }
