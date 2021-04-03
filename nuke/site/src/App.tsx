@@ -1,20 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Helmet } from 'react-helmet';
+import {
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
 import Jumbotron from './components/Jumbotron';
 import './App.css';
 import './css/main.css'
 import Navbar from './components/Navbar';
 import './fonts/exil.ttf'
+import { Homepage } from './pages/Homepage';
+import { CreateProject } from './pages/Project';
+
+
+const pages = [
+  {path:"/", name:"homepage", Component:Homepage},
+  {path:"/create-project/:classCode", Component:CreateProject},
+]
+
 
 function App() {
-  return (
-    <div className="App standard-background full-screen main-container">
-      <Navbar link="/" text="get started"/>
 
-      <Jumbotron/>
-      
-      <div className="navbar"></div>
-    </div>
+  const routes = pages.map(({path, Component}) => (
+    <Route key={path} exact path={path}>
+      <Component />
+    </Route>
+  ));
+
+  return (
+    <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>Night at the Museum</title>
+          <meta name="description" content="Night at the Museum @ DNHS 2022" />
+          <meta itemProp="description" content="Night at the Museum @ DNHS 2022" />
+      </Helmet>
+
+      <Router>
+        <div className="App standard-background full-screen main-container">
+          {routes}
+        </div>
+      </Router>
+
+    </>
   );
 }
 

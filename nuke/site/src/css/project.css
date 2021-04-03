@@ -1,0 +1,49 @@
+.project-form{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container{
+    height: 75%;
+    flex-grow: 1;
+    flex-basis: 50%;
+    background-color: none;
+    margin: 10vmin;
+}
+
+.form{
+    width: 100%;
+    height: 100%;
+    background-color: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.input-box{
+    padding: 2%;
+}
+
+
+.input{
+    padding: 2%;
+    font-size: 5vmin;
+    border-radius: 100px;
+    outline: none;
+    border: none;
+    font-family: inherit;
+    text-align: center;
+    transition: transform 1s, box-shadow 1s, font-size 1s ;
+}
+
+.input:focus{
+    transform: scale(1.25);
+    -webkit-box-shadow: 2px 0px 15px 9px rgba(158,158,158,0.49); 
+    box-shadow: 2px 0px 15px 9px rgba(158,158,158,0.49);
+}
+
+.input-submit{
+
+}
