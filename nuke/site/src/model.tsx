@@ -2,7 +2,7 @@
 export interface Class{
     id?:number,
     classCode?:number,
-    //className?:string, NEED TO ADD TO SPRING
+    className?:string,
     classSlug?:string,
     teacherName?:string,
 

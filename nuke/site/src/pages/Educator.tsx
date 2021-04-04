@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import slugify from 'react-slugify';
 import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 import { Class } from '../model';
@@ -9,6 +10,7 @@ export const CreateClass = () => {
     const [stage, setStage] = useState<number>(1);
     const [classData, setClassData] = useState<Class>({
         teacherName:"",
+        className:"",
         classSlug:"",
 
         auth:"",
@@ -21,6 +23,7 @@ export const CreateClass = () => {
 
 
     const createClass = () => {
+        classData.classSlug = slugify(classData.className);
         makeRequest(classData, 'classes/', 'POST')
         .then((response:any) => {
             console.log(response);
@@ -37,7 +40,6 @@ export const CreateClass = () => {
                     console.log("password incorrect");
                 }
             });
-        //setStage(1);
     }
 
     
@@ -56,8 +58,8 @@ export const CreateClass = () => {
                 <Input params={{type:"text", placeholder:"name", name:"teacherName", value:classData.teacherName}}
                 onchange={(event)=>setClassData((classData)=>({...classData, teacherName:event.target.value}))}/>
                 
-                <Input params={{type:"text", placeholder:"class name", name:"classSlug", value:classData.classSlug}}
-                onchange={(event)=>setClassData((classData)=>({...classData, classSlug:event.target.value}))}/>
+                <Input params={{type:"text", placeholder:"class name", name:"className", value:classData.className}}
+                onchange={(event)=>setClassData((classData)=>({...classData, className:event.target.value}))}/>
                 
 
                 <Button text="submit" onclick={createClass}/>

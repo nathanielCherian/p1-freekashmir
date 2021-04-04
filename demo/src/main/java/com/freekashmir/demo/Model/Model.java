@@ -11,6 +11,7 @@ public class Model {
         classes = new Table("Classes")
                 .addColumn(new Column("id", Column.INTEGER).isPrimaryKey())
                 .addColumn(new Column("classCode", Column.VARCHAR).isUnique().isNotNull())
+                .addColumn(new Column("className", Column.VARCHAR).isNotNull())
                 .addColumn(new Column("classSlug", Column.VARCHAR).isUnique().isNotNull())
                 .addColumn(new Column("teacherName", Column.VARCHAR).isNotNull())
                 .create();

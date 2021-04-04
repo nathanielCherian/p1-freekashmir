@@ -24,10 +24,11 @@ public class Classes {
         if(!Security.authenticate(object, Groups.ADMIN)) return null; //fail
 
         String code = Util.generateCode(5);
+        String className = (String) object.get("className");
         String classSlug = (String) object.get("classSlug");
-        String name = (String) object.get("teacherName");
+        String teacherName = (String) object.get("teacherName");
 
-        classes.createRow(new Object[]{null, code, classSlug, name});
+        classes.createRow(new Object[]{null, code, className, classSlug, teacherName});
 
         JSONObject response = new JSONObject();
         response.put("classCode", code);
