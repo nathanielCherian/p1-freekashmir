@@ -49,7 +49,7 @@ export const CreateProject = () => {
         )
     }
 
-    const handleSubit = (event:any) => {
+    const handleSubmit = (event:any) => {
         event.preventDefault();
         console.log(projectData)
         makeRequest(projectData, 'students', 'POST')
@@ -69,7 +69,7 @@ export const CreateProject = () => {
             <div className="form-container">
                 <h1>Class Code: {classCode}</h1>
                 <h1>With {cd.teacherName}</h1>
-                <form className="form" onSubmit={handleSubit}>
+                <form className="form" onSubmit={handleSubmit}>
                     <div className="project-form__inputs">
                         <Input params={{type:"text", placeholder:"name"}} 
                         onchange={(event)=>setProjectData((projectData) => ({...projectData, studentName:event.target.value}))}/>

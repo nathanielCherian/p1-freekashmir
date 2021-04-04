@@ -5,6 +5,8 @@ export interface Class{
     //className?:string, NEED TO ADD TO SPRING
     classSlug?:string,
     teacherName?:string,
+
+    [key:string]: any, //Catch all (auth..)
 }
 
 export interface Project {

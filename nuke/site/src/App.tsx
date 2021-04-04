@@ -11,11 +11,13 @@ import Navbar from './components/Navbar';
 import './fonts/exil.ttf'
 import { Homepage } from './pages/Homepage';
 import { CreateProject } from './pages/Project';
+import { CreateClass } from './pages/Educator';
 
 
 const pages = [
   {path:"/", name:"homepage", Component:Homepage},
   {path:"/create-project/:classCode", Component:CreateProject},
+  {path:"/create-class", Component:CreateClass},
 ]
 
 
