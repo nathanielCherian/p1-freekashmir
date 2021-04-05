@@ -4,6 +4,8 @@
 ### Mini Review 1 Submission
  - N@TM Smart Goals: https://github.com/nathanielCherian/p1-freekashmir/projects/2
  - Minilab Repo: https://github.com/Altoid0/FRQ-Site
+ - Project Plan: https://docs.google.com/document/d/17-laSVqIiIY4lLQtYIeDvaCS_6Kf38DUzZetpVUfkms/edit?usp=sharing
+
 
 ## Development Instructions 
 1. cd into react project `cd homepage`
