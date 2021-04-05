@@ -7,12 +7,16 @@ import { makeRequest } from '../utils/API';
 
 export const CreateClass = () => {
 
+    const [finished, setFinished] = useState<boolean>(false);
     const [stage, setStage] = useState<number>(1);
     const [classData, setClassData] = useState<Class>({
         teacherName:"",
         className:"",
         classSlug:"",
 
+        classCode:"",
+
+        completed:false,
         auth:"",
     });
 
@@ -27,6 +31,7 @@ export const CreateClass = () => {
         makeRequest(classData, 'classes/', 'POST')
         .then((response:any) => {
             console.log(response);
+            setFinished(true);
         });
     }
 
@@ -43,6 +48,9 @@ export const CreateClass = () => {
     }
 
     
+
+
+
     var inputs;
     if(stage === 1){
         inputs = (
@@ -68,9 +76,15 @@ export const CreateClass = () => {
     }
 
 
-
-    return (
-        <div className="class-form">
+    var mainStage;
+    if(classData.classCode === ""){
+        mainStage = (
+            <div>
+                <h1>Class Created!</h1>
+            </div>
+        )
+    }else {
+        mainStage = (
             <div className="form-container">
                 <h1>Create A Class</h1>
                 <form className="form" onSubmit={handleSubmit}>
@@ -79,6 +93,13 @@ export const CreateClass = () => {
                     </div>
                 </form>
             </div>
+        )
+    }
+
+
+    return (
+        <div className="class-form">
+            {mainStage}
         </div>
     )
 }

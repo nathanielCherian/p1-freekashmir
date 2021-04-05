@@ -1,7 +1,7 @@
 
 export interface Class{
     id?:number,
-    classCode?:number,
+    classCode?:string,
     className?:string,
     classSlug?:string,
     teacherName?:string,
