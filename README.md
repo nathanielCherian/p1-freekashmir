@@ -11,8 +11,6 @@
 ### Mini Review 1 Submission
  - N@TM Smart Goals: https://github.com/nathanielCherian/p1-freekashmir/projects/2
  - Minilab Repo: https://github.com/Altoid0/FRQ-Site
- - Minilab Smart Goals: https://github.com/Altoid0/FRQ-Site/projects/1
- - Proof of everyone's work: https://github.com/Altoid0/FRQ-Site/graphs/contributors
 
 ## Idea + Growth 
 
