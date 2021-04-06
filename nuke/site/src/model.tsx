@@ -14,5 +14,7 @@ export interface Project {
     studentName?:string,
     grade?:number,
     classCode?:string //FOREIGN KEY to Class.classCode
+
+    [key:string]: any, //Catch all (auth..)
 }
 

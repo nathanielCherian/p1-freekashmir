@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Redirect } from 'react-router-dom'
 import { Class, Project } from '../model';
 import { makeRequest } from '../utils/API';
 import '../css/project.css';
@@ -13,8 +13,10 @@ export const CreateProject = () => {
     const [projectData, setProjectData] = useState<Project>({
         studentName:"",
         grade:-1,
-        classCode:classCode
-    })
+        classCode:classCode,
+
+        completed:false
+    });
 
     const validateClassCode = () => {
         makeRequest({}, `classes?classCode=${classCode}`, "GET")
@@ -51,9 +53,9 @@ export const CreateProject = () => {
 
     const handleSubmit = (event:any) => {
         event.preventDefault();
-        console.log(projectData)
         makeRequest(projectData, 'students', 'POST')
             .then((response:any) => {
+                setProjectData((projectData) => ({...projectData, completed:response.completed}))
                 console.log(response);
             });
     }
@@ -63,9 +65,10 @@ export const CreateProject = () => {
     * True case
     */ 
 
-    const cd = classData as Class;
-    return (
-        <div className="project-form">
+    var data;
+    if(!projectData.completed){
+        const cd = classData as Class;
+        data = (
             <div className="form-container">
                 <h1>Class Code: {classCode}</h1>
                 <h1>With {cd.teacherName}</h1>
@@ -80,6 +83,61 @@ export const CreateProject = () => {
 
                 </form>
             </div>
+        )
+    }else{
+        data = (
+            <div className="form-container">
+                <h1>Project Created!</h1>
+            </div>
+        )
+    }
+
+
+
+    return (
+        <div className="project-form">
+            {data}
         </div>
     )
+}
+
+
+
+
+export const TestClassCode = () => {
+
+    const [classCode, setClassCode] = useState<String>("");
+    const [redirect, setRedirect] = useState<JSX.Element>();
+
+    const handleSubmit = (event:any) => {
+        event.preventDefault();
+        makeRequest({}, `classes?classCode=${classCode}`, "GET")
+        .then((response:Class[]) => {
+            if(response.length > 0){
+                console.log("class exists");
+                setRedirect(<Redirect to="/"/>)
+            }else{
+                //false
+            }
+        });
+    }
+
+    if(redirect){
+        return redirect;
+    }
+
+    return (
+        <div className="form-container">
+            <div className="project-form">
+                <form className="form" onSubmit={handleSubmit}>
+                    <div className="project-form__inputs">
+                        <Input params={{type:"text", placeholder:"class code"}} 
+                        onchange={(event)=>setClassCode(event.target.value)}/>
+                        <Button text="submit" params={{type:"submit"}} />
+                    </div>
+                </form>
+            </div>
+        </div>
+    )
+
 }

@@ -29,8 +29,9 @@ export const CreateClass = () => {
     const createClass = () => {
         classData.classSlug = slugify(classData.className);
         makeRequest(classData, 'classes/', 'POST')
-        .then((response:any) => {
+        .then((response:Class) => {
             console.log(response);
+            setClassData((classData)=>({...classData, completed:true, classCode:response.classCode}))
             setFinished(true);
         });
     }
@@ -77,10 +78,11 @@ export const CreateClass = () => {
 
 
     var mainStage;
-    if(classData.classCode === ""){
+    if(classData.completed == true){
         mainStage = (
             <div>
                 <h1>Class Created!</h1>
+                <h1>Class Code: {classData.classCode}</h1>
             </div>
         )
     }else {
