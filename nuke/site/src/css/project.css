@@ -42,7 +42,7 @@
     animation: incorrectBounce 0.82s cubic-bezier(.36,.07,.19,.97) 1;
 }
 
-.input:focus{
+.input-expand:focus{
     transform: scale(1.25);
     -webkit-box-shadow: 2px 0px 15px 9px rgba(158,158,158,0.49); 
     box-shadow: 2px 0px 15px 9px rgba(158,158,158,0.49);

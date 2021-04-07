@@ -56,7 +56,7 @@ export const CreateClass = () => {
     if(stage === 1){
         inputs = (
             <>
-                <Input params={{type:"text", placeholder:"password", name:"password", value:classData.auth}}
+                <Input grow params={{type:"text", placeholder:"password", name:"password", value:classData.auth}}
                 onchange={(event)=>setClassData((classData)=>({...classData, auth:event.target.value}))}/>
                 <Button text="next" onclick={passwordSubmit}/>
             </>
@@ -64,10 +64,10 @@ export const CreateClass = () => {
     }else if(stage === 2){
         inputs = (
             <>
-                <Input params={{type:"text", placeholder:"name", name:"teacherName", value:classData.teacherName}}
+                <Input grow params={{type:"text", placeholder:"name", name:"teacherName", value:classData.teacherName}}
                 onchange={(event)=>setClassData((classData)=>({...classData, teacherName:event.target.value}))}/>
                 
-                <Input params={{type:"text", placeholder:"class name", name:"className", value:classData.className}}
+                <Input grow params={{type:"text", placeholder:"class name", name:"className", value:classData.className}}
                 onchange={(event)=>setClassData((classData)=>({...classData, className:event.target.value}))}/>
                 
 

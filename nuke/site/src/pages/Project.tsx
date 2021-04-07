@@ -83,9 +83,9 @@ export const CreateProject = () => {
                 <h1>With {cd.teacherName}</h1>
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="project-form__inputs">
-                        <Input params={{type:"text", placeholder:"name"}} 
+                        <Input grow params={{type:"text", placeholder:"name"}} 
                         onchange={(event)=>setProjectData((projectData) => ({...projectData, studentName:event.target.value}))}/>
-                        <Input params={{type:"number", placeholder:"grade", min:9, max:12}}
+                        <Input grow params={{type:"number", placeholder:"grade", min:9, max:12}}
                         onchange={(event)=>setProjectData((projectData) => ({...projectData, grade:parseInt(event.target.value)}))}/>
                         <Button text="submit" params={{type:"submit"}}/>
                     </div>
@@ -142,7 +142,7 @@ export const TestClassCode = () => {
             <div className="project-form">
                 <form className="form" onSubmit={handleSubmit}>
                     <div className="project-form__inputs">
-                        <Input params={{type:"text", placeholder:"class code"}} 
+                        <Input grow params={{type:"text", placeholder:"class code"}} 
                         onchange={(event)=>setClassCode(event.target.value)}/>
                         <Button text="submit" params={{type:"submit"}} />
                     </div>
