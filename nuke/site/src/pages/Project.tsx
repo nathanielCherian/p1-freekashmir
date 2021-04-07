@@ -53,6 +53,7 @@ export const CreateProject = () => {
 
     const handleSubmit = (event:any) => {
         event.preventDefault();
+        if(!validateForm()) return;
         makeRequest(projectData, 'students', 'POST')
             .then((response:any) => {
                 setProjectData((projectData) => ({...projectData, completed:response.completed}))
@@ -60,6 +61,14 @@ export const CreateProject = () => {
             });
     }
 
+    const validateForm = () => {
+        
+        if(projectData.studentName === ""){
+            return false;
+        }
+
+        return true;
+    }
 
     /*
     * True case
@@ -109,13 +118,15 @@ export const TestClassCode = () => {
     const [classCode, setClassCode] = useState<String>("");
     const [redirect, setRedirect] = useState<JSX.Element>();
 
+
+
     const handleSubmit = (event:any) => {
         event.preventDefault();
         makeRequest({}, `classes?classCode=${classCode}`, "GET")
         .then((response:Class[]) => {
             if(response.length > 0){
                 console.log("class exists");
-                setRedirect(<Redirect to="/"/>)
+                setRedirect(<Redirect to={"/create-project/"+classCode}/>)
             }else{
                 //false
             }
