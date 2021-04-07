@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { Class, Project } from '../model';
 import { makeRequest } from '../utils/API';
 
@@ -58,7 +58,7 @@ export const ClassPage = () => {
     if(projects){
         studentProjects = projects.map((project) => {
             return (
-                <h1>{project.studentName} is in {project.grade}</h1>
+                <h1><Link to={`/class/${classSlug}/${project.id}`}>{`${project.studentName} is in ${project.grade}`}</Link></h1>
             )
         });
     }
@@ -70,4 +70,52 @@ export const ClassPage = () => {
             {studentProjects}
         </div>
     )
+}
+
+
+
+export const ProjectOnClassPage = () => {
+
+    const {classCode, projectId} = useParams<any>();
+
+    const [projectData, setProjectData] = useState<Project|boolean>();
+
+    const getProject = () => {
+        makeRequest({}, `students?classCode=${classCode}&id=${projectId}`)
+            .then((response:Project[]) => {
+                if(response.length > 0){
+                    setProjectData(response[0]);
+                }else{
+                    setProjectData(false);
+                }
+            });
+    }
+
+    useEffect(() => {
+        getProject();
+    }, []);
+
+    if(typeof projectData === "undefined"){
+        return <div></div>
+    }
+
+    if(!projectData){
+        return (
+            <div>
+                <h1>This project does not exist.</h1>
+            </div>
+        )
+    }
+
+
+    var pd = projectData as Project;
+
+    return (
+        <div>
+            <h1>This project exists.</h1>
+            <h1>name: {pd.studentName}</h1>
+            <h1>grade: {pd.grade}</h1>
+        </div>
+    )
+
 }

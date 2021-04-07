@@ -12,7 +12,7 @@ import './fonts/exil.ttf'
 import { Homepage } from './pages/Homepage';
 import { CreateProject, TestClassCode } from './pages/Project';
 import { CreateClass } from './pages/Educator';
-import { ClassPage } from './pages/ClassPage';
+import { ClassPage, ProjectOnClassPage } from './pages/ClassPage';
 
 
 const pages = [
@@ -21,7 +21,9 @@ const pages = [
   {path:"/create-project/:classCode", Component:CreateProject},
   {path:"/create-class", Component:CreateClass},
 
-  {path:"/class/:classSlug", Component:ClassPage}
+  {path:"/class/:classSlug", Component:ClassPage},
+  {path:"/class/:classSlug/:projectId", Component:ProjectOnClassPage}
+
 ]
 
 
