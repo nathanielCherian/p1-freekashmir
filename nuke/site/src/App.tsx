@@ -13,6 +13,7 @@ import { Homepage } from './pages/Homepage';
 import { CreateProject, TestClassCode } from './pages/Project';
 import { CreateClass } from './pages/Educator';
 import { ClassPage, ProjectOnClassPage } from './pages/ClassPage';
+import { SearchExplore } from './pages/Explore';
 
 
 const pages = [
@@ -22,7 +23,9 @@ const pages = [
   {path:"/create-class", Component:CreateClass},
 
   {path:"/class/:classSlug", Component:ClassPage},
-  {path:"/class/:classSlug/:projectId", Component:ProjectOnClassPage}
+  {path:"/class/:classSlug/:projectId", Component:ProjectOnClassPage},
+
+  {path:"/explore", Component:SearchExplore}
 
 ]
 
